@@ -13,8 +13,7 @@ export function Header() {
         </Link>
         <div className="flex flex-1 items-center justify-end space-x-4">
             <nav className="flex items-center space-x-6 text-sm font-medium">
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">Docs</Link>
-                <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">GitHub</Link>
+                <Link href="https://github.com/Mohamed0Hussein/sites-peformance-observatory" className="text-muted-foreground hover:text-foreground transition-colors" target="_blank">GitHub</Link>
             </nav>
         </div>
       </div>
