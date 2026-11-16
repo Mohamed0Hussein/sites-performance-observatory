@@ -1,129 +1,58 @@
-# ⚡ Frontend Performance Observatory
+# Performance Observatory
 
-**live link** : https://sites-peformance-observatory.vercel.app/
+Run Google PageSpeed Insights on any page and read the result as a report: real-user Core Web Vitals next to a Lighthouse lab test, the fixes with the biggest estimated savings, every request on a timeline, and page weight by type.
 
-![Status](https://img.shields.io/badge/Status-Production%20Ready-success)
-![Framework](https://img.shields.io/badge/Next.js-15-black)
-![Styling](https://img.shields.io/badge/Tailwind_CSS-v4-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+Live site: https://sites-peformance-observatory.vercel.app/
 
-A premium, production-grade dashboard designed to analyze, visualize, and optimize frontend performance. Built for engineers who care about Web Vitals, rendering metrics, and user experience signals.
+Sample report: https://sites-peformance-observatory.vercel.app/result?sample=1
 
----
+## What's in a report
 
-## 🚀 Overview
+- **Core Web Vitals assessment.** Pass or fail, worked out the way Google does: LCP, INP and CLS must all be good at the 75th percentile.
+- **Real users.** 28 days of Chrome UX Report data, with the good / needs improvement / poor split for each metric. If the page has too little traffic, the report says it fell back to whole-site data, or that there's no data at all.
+- **Lab test.** The five Lighthouse metrics, each with its score and its weight in the overall performance score.
+- **What to fix first.** Failing Lighthouse audits that have an estimated saving, sorted by time saved, then bytes, then layout shift.
+- **Requests.** A waterfall of the first 40 requests, with third-party hosts marked.
+- **Page weight.** Transferred bytes by resource type.
 
-**Frontend Performance Observatory** is more than just a speed test—it's a deep-dive diagnostic tool. It moves beyond simple scores to provide visual watermills, bundle composition breakdowns, and actionable insights to improve LCP, CLS, and FID.
+Results are cached for five minutes per URL and device. "Run again" skips the cache.
 
-Designed with a **"Premium First"** philosophy, the UI features glassmorphism, smooth micro-interactions (Framer Motion), and a sophisticated dark mode aesthetic that feels alive.
+## Running it
 
-## ✨ Key Features
-
-### 📊 Deep Performance Analysis
-- **Core Web Vitals**: Instant analysis of LCP, CLS, FID, INP, FCP, and TTFB.
-- **Smart Scoring**: Visual grading system (Good/Needs Improvement/Poor) for immediate feedback.
-- **Mock Simulation**: Currently runs in a high-fidelity simulation mode for instant demos without API keys.
-
-### 🌊 Visual Waterfall Timeline
-- **Request Sequencing**: Visualize how your resources load in real-time.
-- **Bottleneck Detection**: Identify render-blocking scripts and network delays.
-- **Color-Coded Categories**: Distinguish between Network, Render, and Script execution times.
-
-### 📦 Bundle Intelligence
-- **Asset Breakdown**: Detailed charts showing the size distribution of JS, CSS, and Images.
-- **Optimization Tips**: actionable suggestions to reduce bundle bloat.
-
-### 🕰️ History & Comparison
-- **Session History**: Automatically tracks recent analyses.
-- **Local Storage**: Persists data across page reloads for quick comparisons.
-
----
-
-## 🛠️ Tech Stack
-
-Built with the latest cutting-edge web technologies:
-
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Animation**: [Framer Motion](https://www.framer.com/motion/)
-- **Charts**: [Recharts](https://recharts.org/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-
----
-
-## 🏁 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/frontend-performance-observatory.git
-   cd frontend-performance-observatory
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-   *Note: usage of `@tailwindcss/postcss` and Tailwind v4 requires the latest dependencies.*
-
-3. **Run the development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open the App**
-   Visit [http://localhost:3000](http://localhost:3000) to see the dashboard in action.
-
----
-
-## 🏗️ Project Structure
-
-```
-├── app/
-│   ├── api/             # Next.js API Routes (Server-side analysis logic)
-│   ├── components/      # React components (Dashboard, Hero, Metrics)
-│   │   └── ui/          # Reusable UI primitives (Cards, Buttons, Inputs)
-│   ├── lib/             # Utilities and mock data generators
-│   └── types.ts         # TypeScript definitions for metrics & analysis
-├── public/              # Static assets
-└── ...
+```bash
+npm install
+cp .env.example .env.local   # then add your key
+npm run dev
 ```
 
----
+You need a PageSpeed Insights API key. Google no longer serves keyless requests. Get a key from [Google Cloud](https://developers.google.com/speed/docs/insights/v5/get-started#APIKey) and set `PSI_API_KEY`.
 
-## 🔌 Connecting Real Data
+Without a key, `/result?sample=1` still works. It renders a made-up response for a fictional store through the same parser, and it's labelled as sample data on the page.
 
-By default, the application runs in **Simulation Mode** to provide a seamless demo experience. To connect it to real live data:
+## JSON API
 
-1. Obtain a **Google PageSpeed Insights API Key**.
-2. Open `app/api/analyze/route.ts`.
-3. Uncomment the fetch logic and replace the mock generator with your API call.
-
-```typescript
-// app/api/analyze/route.ts
-const API_KEY = process.env.PSI_API_KEY;
-const url = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${targetUrl}&key=${API_KEY}`;
-// ... fetch and parse logic
+```
+GET /api/analyze?url=example.com&strategy=mobile
 ```
 
----
+This returns the same `Report` object the page renders (see `lib/report.ts`). Errors come back as `{ error: { code, message } }` with a matching status code: 400 for an invalid URL, 422 when the page can't be loaded, 429 when the quota is used up, 503 when no key is configured.
 
-## 🎨 Design Philosophy
+## How it's built
 
-This project adheres to **Aesthetic-Usability principles**. 
+Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS 4. There are no chart or animation libraries; the charts are plain HTML and SVG.
 
-- **Typography**: Clean, varied weights using Geist Sans/Mono.
-- **Color Palette**: Semantically meaningful colors (Emerald/Amber/Rose) for status, set against a deep zinc/slate dark mode background.
-- **Feedback**: Every interaction provides immediate visual feedback through hover states and transitions.
+```
+app/
+  page.tsx               home: URL form and recent tests
+  result/page.tsx        server-rendered report; loading.tsx shows elapsed time
+  api/analyze/route.ts   JSON endpoint
+lib/
+  psi/fetch.ts           calls PageSpeed Insights, turns its errors into typed ReportErrors
+  psi/parse.ts           raw PSI response -> Report
+  psi/sample.json        sample response for /result?sample=1
+  report.ts              Report types
+  thresholds.ts          Web Vitals thresholds and Lighthouse score bands
+components/report/       one component per report section
+```
 
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+The report page fetches on the server, so a result URL can be shared and nothing slow runs in the browser. Recent tests are kept in `localStorage` on the visitor's device.

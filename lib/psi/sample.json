@@ -1,0 +1,457 @@
+{
+ "id": "https://shop.example.com/",
+ "analysisUTCTimestamp": "2026-11-16T12:00:00.000Z",
+ "loadingExperience": {
+  "id": "https://shop.example.com/",
+  "origin_fallback": false,
+  "overall_category": "AVERAGE",
+  "metrics": {
+   "LARGEST_CONTENTFUL_PAINT_MS": {
+    "percentile": 3120,
+    "distributions": [
+     {
+      "min": 0,
+      "max": 1,
+      "proportion": 0.61
+     },
+     {
+      "min": 1,
+      "max": 2,
+      "proportion": 0.27
+     },
+     {
+      "min": 2,
+      "proportion": 0.12
+     }
+    ],
+    "category": "AVERAGE"
+   },
+   "INTERACTION_TO_NEXT_PAINT": {
+    "percentile": 184,
+    "distributions": [
+     {
+      "min": 0,
+      "max": 1,
+      "proportion": 0.78
+     },
+     {
+      "min": 1,
+      "max": 2,
+      "proportion": 0.17
+     },
+     {
+      "min": 2,
+      "proportion": 0.05
+     }
+    ],
+    "category": "FAST"
+   },
+   "CUMULATIVE_LAYOUT_SHIFT_SCORE": {
+    "percentile": 8,
+    "distributions": [
+     {
+      "min": 0,
+      "max": 1,
+      "proportion": 0.82
+     },
+     {
+      "min": 1,
+      "max": 2,
+      "proportion": 0.12
+     },
+     {
+      "min": 2,
+      "proportion": 0.06
+     }
+    ],
+    "category": "FAST"
+   },
+   "FIRST_CONTENTFUL_PAINT_MS": {
+    "percentile": 1960,
+    "distributions": [
+     {
+      "min": 0,
+      "max": 1,
+      "proportion": 0.7
+     },
+     {
+      "min": 1,
+      "max": 2,
+      "proportion": 0.21
+     },
+     {
+      "min": 2,
+      "proportion": 0.09
+     }
+    ],
+    "category": "AVERAGE"
+   },
+   "EXPERIMENTAL_TIME_TO_FIRST_BYTE": {
+    "percentile": 690,
+    "distributions": [
+     {
+      "min": 0,
+      "max": 1,
+      "proportion": 0.8
+     },
+     {
+      "min": 1,
+      "max": 2,
+      "proportion": 0.15
+     },
+     {
+      "min": 2,
+      "proportion": 0.05
+     }
+    ],
+    "category": "FAST"
+   }
+  }
+ },
+ "lighthouseResult": {
+  "requestedUrl": "https://shop.example.com/",
+  "finalDisplayedUrl": "https://shop.example.com/",
+  "fetchTime": "2026-11-16T12:00:00.000Z",
+  "lighthouseVersion": "12.8.2",
+  "runWarnings": [],
+  "configSettings": {
+   "formFactor": "mobile"
+  },
+  "categories": {
+   "performance": {
+    "score": 0.58,
+    "auditRefs": [
+     {
+      "id": "first-contentful-paint",
+      "weight": 10
+     },
+     {
+      "id": "largest-contentful-paint",
+      "weight": 25
+     },
+     {
+      "id": "total-blocking-time",
+      "weight": 30
+     },
+     {
+      "id": "cumulative-layout-shift",
+      "weight": 25
+     },
+     {
+      "id": "speed-index",
+      "weight": 10
+     }
+    ]
+   }
+  },
+  "audits": {
+   "first-contentful-paint": {
+    "title": "First Contentful Paint",
+    "score": 0.62,
+    "numericValue": 2480,
+    "scoreDisplayMode": "numeric"
+   },
+   "largest-contentful-paint": {
+    "title": "Largest Contentful Paint",
+    "score": 0.31,
+    "numericValue": 4920,
+    "scoreDisplayMode": "numeric"
+   },
+   "total-blocking-time": {
+    "title": "Total Blocking Time",
+    "score": 0.55,
+    "numericValue": 410,
+    "scoreDisplayMode": "numeric"
+   },
+   "cumulative-layout-shift": {
+    "title": "Cumulative Layout Shift",
+    "score": 0.84,
+    "numericValue": 0.12,
+    "scoreDisplayMode": "numeric"
+   },
+   "speed-index": {
+    "title": "Speed Index",
+    "score": 0.71,
+    "numericValue": 4100,
+    "scoreDisplayMode": "numeric"
+   },
+   "render-blocking-resources": {
+    "title": "Eliminate render-blocking resources",
+    "score": 0.3,
+    "scoreDisplayMode": "metricSavings",
+    "displayValue": "Est savings of 620 ms",
+    "metricSavings": {
+     "FCP": 620,
+     "LCP": 620
+    },
+    "details": {
+     "type": "opportunity",
+     "overallSavingsMs": 620
+    }
+   },
+   "uses-responsive-images": {
+    "title": "Properly size images",
+    "score": 0.4,
+    "scoreDisplayMode": "metricSavings",
+    "displayValue": "Est savings of 286 KiB",
+    "metricSavings": {
+     "LCP": 450
+    },
+    "details": {
+     "type": "opportunity",
+     "overallSavingsMs": 450,
+     "overallSavingsBytes": 292864
+    }
+   },
+   "unused-javascript": {
+    "title": "Reduce unused JavaScript",
+    "score": 0.35,
+    "scoreDisplayMode": "metricSavings",
+    "displayValue": "Est savings of 141 KiB",
+    "metricSavings": {
+     "LCP": 300
+    },
+    "details": {
+     "type": "opportunity",
+     "overallSavingsMs": 300,
+     "overallSavingsBytes": 144384
+    }
+   },
+   "third-party-summary": {
+    "title": "Reduce the impact of third-party code",
+    "score": 0,
+    "scoreDisplayMode": "metricSavings",
+    "displayValue": "Third-party code blocked the main thread for 230 ms",
+    "metricSavings": {
+     "TBT": 230
+    },
+    "details": {
+     "type": "table"
+    }
+   },
+   "layout-shifts": {
+    "title": "Avoid large layout shifts",
+    "score": 0,
+    "scoreDisplayMode": "metricSavings",
+    "metricSavings": {
+     "CLS": 0.09
+    },
+    "details": {
+     "type": "table"
+    }
+   },
+   "font-display": {
+    "title": "Ensure text remains visible during webfont load",
+    "score": 0.5,
+    "scoreDisplayMode": "metricSavings",
+    "displayValue": "Est savings of 90 ms",
+    "metricSavings": {
+     "FCP": 90
+    },
+    "details": {
+     "type": "opportunity",
+     "overallSavingsMs": 90
+    }
+   },
+   "dom-size": {
+    "title": "Avoid an excessive DOM size",
+    "score": 0.5,
+    "scoreDisplayMode": "numeric",
+    "displayValue": "1,412 elements",
+    "details": {
+     "type": "table"
+    }
+   },
+   "network-requests": {
+    "title": "Network Requests",
+    "score": null,
+    "scoreDisplayMode": "informative",
+    "details": {
+     "type": "table",
+     "items": [
+      {
+       "url": "https://shop.example.com/",
+       "resourceType": "Document",
+       "networkRequestTime": 0,
+       "networkEndTime": 420,
+       "transferSize": 38211,
+       "statusCode": 200
+      },
+      {
+       "url": "https://shop.example.com/_next/static/css/app.css",
+       "resourceType": "Stylesheet",
+       "networkRequestTime": 450,
+       "networkEndTime": 630,
+       "transferSize": 24110,
+       "statusCode": 200
+      },
+      {
+       "url": "https://fonts.example-cdn.com/inter-var.woff2",
+       "resourceType": "Font",
+       "networkRequestTime": 470,
+       "networkEndTime": 780,
+       "transferSize": 48022,
+       "statusCode": 200
+      },
+      {
+       "url": "https://shop.example.com/_next/static/chunks/framework.js",
+       "resourceType": "Script",
+       "networkRequestTime": 455,
+       "networkEndTime": 715,
+       "transferSize": 61540,
+       "statusCode": 200
+      },
+      {
+       "url": "https://shop.example.com/_next/static/chunks/main.js",
+       "resourceType": "Script",
+       "networkRequestTime": 458,
+       "networkEndTime": 798,
+       "transferSize": 112890,
+       "statusCode": 200
+      },
+      {
+       "url": "https://shop.example.com/_next/static/chunks/pages/index.js",
+       "resourceType": "Script",
+       "networkRequestTime": 460,
+       "networkEndTime": 850,
+       "transferSize": 88410,
+       "statusCode": 200
+      },
+      {
+       "url": "https://shop.example.com/images/hero-1600.jpg",
+       "resourceType": "Image",
+       "networkRequestTime": 640,
+       "networkEndTime": 1620,
+       "transferSize": 412300,
+       "statusCode": 200
+      },
+      {
+       "url": "https://www.googletagmanager.com/gtm.js?id=GTM-XXXX",
+       "resourceType": "Script",
+       "networkRequestTime": 700,
+       "networkEndTime": 1120,
+       "transferSize": 96200,
+       "statusCode": 200
+      },
+      {
+       "url": "https://shop.example.com/api/products?featured=1",
+       "resourceType": "Fetch",
+       "networkRequestTime": 1180,
+       "networkEndTime": 1440,
+       "transferSize": 8120,
+       "statusCode": 200
+      },
+      {
+       "url": "https://shop.example.com/images/product-01.webp",
+       "resourceType": "Image",
+       "networkRequestTime": 1260,
+       "networkEndTime": 1560,
+       "transferSize": 42110,
+       "statusCode": 200
+      },
+      {
+       "url": "https://shop.example.com/images/product-02.webp",
+       "resourceType": "Image",
+       "networkRequestTime": 1265,
+       "networkEndTime": 1585,
+       "transferSize": 39870,
+       "statusCode": 200
+      },
+      {
+       "url": "https://shop.example.com/images/product-03.webp",
+       "resourceType": "Image",
+       "networkRequestTime": 1270,
+       "networkEndTime": 1680,
+       "transferSize": 51220,
+       "statusCode": 200
+      },
+      {
+       "url": "https://widget.example-chat.io/loader.js",
+       "resourceType": "Script",
+       "networkRequestTime": 1500,
+       "networkEndTime": 2020,
+       "transferSize": 143900,
+       "statusCode": 200
+      },
+      {
+       "url": "https://www.google-analytics.com/g/collect?v=2",
+       "resourceType": "Other",
+       "networkRequestTime": 2100,
+       "networkEndTime": 2190,
+       "transferSize": 0,
+       "statusCode": 204
+      },
+      {
+       "url": "https://shop.example.com/images/logo.svg",
+       "resourceType": "Image",
+       "networkRequestTime": 640,
+       "networkEndTime": 760,
+       "transferSize": 3210,
+       "statusCode": 200
+      },
+      {
+       "url": "https://shop.example.com/favicon.ico",
+       "resourceType": "Other",
+       "networkRequestTime": 2300,
+       "networkEndTime": 2360,
+       "transferSize": 1150,
+       "statusCode": 200
+      }
+     ]
+    }
+   },
+   "resource-summary": {
+    "title": "Resources",
+    "score": null,
+    "scoreDisplayMode": "informative",
+    "details": {
+     "type": "table",
+     "items": [
+      {
+       "resourceType": "total",
+       "label": "Total",
+       "requestCount": 16,
+       "transferSize": 1171263
+      },
+      {
+       "resourceType": "document",
+       "label": "document",
+       "requestCount": 1,
+       "transferSize": 38211
+      },
+      {
+       "resourceType": "stylesheet",
+       "label": "stylesheet",
+       "requestCount": 1,
+       "transferSize": 24110
+      },
+      {
+       "resourceType": "font",
+       "label": "font",
+       "requestCount": 1,
+       "transferSize": 48022
+      },
+      {
+       "resourceType": "script",
+       "label": "script",
+       "requestCount": 5,
+       "transferSize": 502940
+      },
+      {
+       "resourceType": "image",
+       "label": "image",
+       "requestCount": 5,
+       "transferSize": 548710
+      },
+      {
+       "resourceType": "other",
+       "label": "other",
+       "requestCount": 3,
+       "transferSize": 9270
+      }
+     ]
+    }
+   }
+  }
+ }
+}
