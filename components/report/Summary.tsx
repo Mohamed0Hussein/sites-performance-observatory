@@ -67,7 +67,7 @@ export function Summary({ report }: { report: Report }) {
             "LCP, INP and CLS are all good for at least 75% of real visits. This is what Google uses in search ranking."}
           {field?.passed === false &&
             `${failing.join(" and ")} ${failing.length === 1 ? "isn't" : "aren't"} good for at least 75% of real visits. All three have to pass.`}
-          {field?.passed === null &&
+          {(!field || field.passed === null) &&
             (field
               ? "Chrome has data for some metrics but not all three Core Web Vitals."
               : "The Chrome UX Report has too few real visits to this page to report on. The lab test below still applies.")}

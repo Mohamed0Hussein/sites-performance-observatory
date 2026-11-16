@@ -1,5 +1,5 @@
 import type { NetworkRequest, ResourceKind } from "@/lib/report";
-import { formatBytes, formatMs } from "@/lib/format";
+import { formatBytes } from "@/lib/format";
 import { kindMeta } from "./kinds";
 import { Section } from "./Section";
 
