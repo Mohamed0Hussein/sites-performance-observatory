@@ -1,6 +1,7 @@
 export function formatMs(ms: number): string {
   if (!Number.isFinite(ms)) return "–";
-  if (ms >= 1000) return `${(ms / 1000).toFixed(ms >= 10_000 ? 0 : 1)} s`;
+  // Two decimals under 10 s, so a value just over a threshold (1,830 ms vs 1,800 ms) doesn't read as equal to it
+  if (ms >= 1000) return `${(ms / 1000).toFixed(ms >= 10_000 ? 1 : 2)} s`;
   return `${Math.round(ms)} ms`;
 }
 

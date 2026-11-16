@@ -43,9 +43,15 @@ export function Waterfall({ requests, total }: { requests: NetworkRequest[]; tot
         {/* axis */}
         <div className="hidden md:block" />
         <div className="relative hidden h-6 border-b border-line md:block" aria-hidden="true">
-          {ticks.map((t) => (
-            <span key={t} className="num absolute bottom-1.5 -translate-x-1/2 text-[11px] text-faint first:translate-x-0" style={{ left: pct(t) }}>
-              {formatMs(t)}
+          {ticks.map((t, i) => (
+            <span
+              key={t}
+              className={`num absolute bottom-1.5 whitespace-nowrap text-[11px] text-faint ${
+                i === 0 ? "" : t / span > 0.9 ? "-translate-x-full" : "-translate-x-1/2"
+              }`}
+              style={{ left: pct(t) }}
+            >
+              {t === 0 ? "0" : t >= 1000 ? `${t / 1000} s` : `${t} ms`}
             </span>
           ))}
         </div>
